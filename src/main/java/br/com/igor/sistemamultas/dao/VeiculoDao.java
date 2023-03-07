@@ -1,30 +1,14 @@
 package br.com.igor.sistemamultas.dao;
 
+import java.util.List;
+
 import br.com.igor.sistemamultas.entities.Veiculo;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.Persistence;
 
-public class VeiculoDao {
+public interface VeiculoDao {
 
-	private EntityManager em;
-	
-	public VeiculoDao() {
-		this.em = Persistence.createEntityManagerFactory("sistema_multas").createEntityManager();
-	}
-	
-	public void cadastrar(Veiculo veiculo) {
-		em.getTransaction().begin();
-		em.persist(veiculo);
-		em.getTransaction().commit();
-	}
-	
-	public Veiculo pesquisar(Long id) {
-		return em.find(Veiculo.class, id);
-	}
-	
-	public void excluir(Veiculo veiculo) {
-		em.getTransaction().begin();
-		em.remove(veiculo);
-		em.getTransaction().commit();
-	}
+	void cadastrar(Veiculo veiculo);
+	Veiculo pesquisar(Long id);
+	void atualizar(Veiculo veiculo);
+	void excluir(Veiculo veiculo);
+	List<Veiculo> pesquisarTodos();
 }

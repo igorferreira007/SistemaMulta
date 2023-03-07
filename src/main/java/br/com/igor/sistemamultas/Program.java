@@ -3,8 +3,8 @@ package br.com.igor.sistemamultas;
 import java.time.Instant;
 import java.util.List;
 
-import br.com.igor.sistemamultas.dao.CondutorDao;
-import br.com.igor.sistemamultas.dao.VeiculoDao;
+import br.com.igor.sistemamultas.dao.imp.CondutorDaoImp;
+import br.com.igor.sistemamultas.dao.imp.VeiculoDaoImp;
 import br.com.igor.sistemamultas.entities.Condutor;
 import br.com.igor.sistemamultas.entities.Veiculo;
 
@@ -12,8 +12,8 @@ public class Program {
 
 	public static void main(String[] args) {
 
-		CondutorDao condutorDao= new CondutorDao();
-		VeiculoDao veiculoDao = new VeiculoDao();
+		CondutorDaoImp condutorDao= new CondutorDaoImp();
+		VeiculoDaoImp veiculoDao = new VeiculoDaoImp();
 		
 //		Condutor condutor = new Condutor(null, 123, "Igor", Instant.parse("2019-06-20T19:53:07Z"), 0);
 //		condutorDao.cadastrar(condutor);
