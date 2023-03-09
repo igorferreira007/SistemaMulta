@@ -124,6 +124,6 @@ public class Veiculo implements Serializable {
 	@Override
 	public String toString() {
 		return "Veiculo [id=" + id + ", placa=" + placa + ", ano=" + ano + ", modelo=" + modelo + ", marca=" + marca
-				+ ", condutor=" + condutor.getId() + "]";
+				+ ", condutor=" + condutor.getId() + ", multas=" + multas + "]";
 	}
 }

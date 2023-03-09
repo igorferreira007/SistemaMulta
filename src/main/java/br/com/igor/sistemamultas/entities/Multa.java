@@ -21,7 +21,7 @@ public class Multa implements Serializable {
 	private Integer pontuacao;
 	
 	@ManyToOne
-	@JoinColumn(name = "veiculo_id")
+	@JoinColumn(name = "veiculo_id", referencedColumnName = "id")
 	private Veiculo veiculo;
 	
 	public Multa() {
@@ -93,6 +93,6 @@ public class Multa implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Multa [id=" + id + ", valor=" + valor + ", pontuacao=" + pontuacao + ", veiculo=" + veiculo + "]";
+		return "Multa [id=" + id + ", valor=" + valor + ", pontuacao=" + pontuacao + ", veiculo=" + veiculo.getId() + "]";
 	}
 }
