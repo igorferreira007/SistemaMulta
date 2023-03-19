@@ -3,6 +3,7 @@ package br.com.igor.sistemamultas.dao.impl;
 import java.util.List;
 
 import br.com.igor.sistemamultas.dao.CondutorDao;
+import br.com.igor.sistemamultas.db.DbException;
 import br.com.igor.sistemamultas.entities.Condutor;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Persistence;
@@ -23,8 +24,21 @@ public class CondutorDaoImpl implements CondutorDao {
 	}
 	
 	@Override
-	public Condutor pesquisar(Long id) {
-		return em.find(Condutor.class, id);
+	public Condutor pesquisar(long id) {
+		Condutor condutor = em.find(Condutor.class, id);
+		if (condutor == null) {
+			throw new DbException("Condutor não encontrado!");
+		}
+		return condutor;
+	}
+	
+	@Override
+	public List<Condutor> pesquisarPorCnh(int numCnh) {
+		List<Condutor> condutores = em.createQuery("SELECT c FROM Condutor c WHERE numcnh = :numCnh", Condutor.class).setParameter("numCnh", numCnh).getResultList();
+		if (condutores.isEmpty()) {
+			throw new DbException("Condutor não encontrado!");
+		}
+		return condutores;
 	}
 	
 	@Override

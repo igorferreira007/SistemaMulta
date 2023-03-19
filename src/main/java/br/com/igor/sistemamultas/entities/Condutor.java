@@ -1,7 +1,8 @@
 package br.com.igor.sistemamultas.entities;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class Condutor implements Serializable {
 	private Long id;
 	private Integer numCnh;
 	private String nome;
-	private Instant dataEmissao;
+	private LocalDate dataEmissao;
 	private Integer pontucao;
 	
 	@OneToMany(mappedBy = "condutor")
@@ -30,7 +31,7 @@ public class Condutor implements Serializable {
 	public Condutor() {
 	}
 
-	public Condutor(Long id, Integer numCnh, String nome, Instant dataEmissao, Integer pontucao) {
+	public Condutor(Long id, Integer numCnh, String nome, LocalDate dataEmissao, Integer pontucao) {
 		super();
 		this.id = id;
 		this.numCnh = numCnh;
@@ -63,11 +64,11 @@ public class Condutor implements Serializable {
 		this.nome = nome;
 	}
 
-	public Instant getDataEmissao() {
+	public LocalDate getDataEmissao() {
 		return dataEmissao;
 	}
 
-	public void setDataEmissao(Instant dataEmissao) {
+	public void setDataEmissao(LocalDate dataEmissao) {
 		this.dataEmissao = dataEmissao;
 	}
 
@@ -110,7 +111,13 @@ public class Condutor implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Condutor [id=" + id + ", numCnh=" + numCnh + ", nome=" + nome + ", dataEmissao=" + dataEmissao
-				+ ", pontucao=" + pontucao + ", veiculos=" + veiculos + "]";
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String todosVeiculos = "";
+		for (Veiculo veiculo : veiculos) {
+			todosVeiculos += "Placa: " + veiculo.getPlaca() + "(" + veiculo.getMarca() + " " + veiculo.getModelo() + ")" + "\n";
+		}
+		String dados = "Condutor" + "\nId: " + id + "\nCNH: " + numCnh + "\nNome: " + nome + "\nEmissao da CNH: " + dataEmissao.format(fmt) 
+				+ "\nPontuação: " + pontucao + "\nVeiculos\n" + todosVeiculos;
+		return dados;
 	}
 }

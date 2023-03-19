@@ -7,8 +7,9 @@ import br.com.igor.sistemamultas.entities.Condutor;
 public interface CondutorDao {
 
 	void cadastrar(Condutor condutor);
-	Condutor pesquisar(Long id);
+	Condutor pesquisar(long id);
+	List<Condutor> pesquisarPorCnh(int numCnh);
 	void atualizar(Condutor condutor);
 	void excluir(Condutor condutor);
-	List<Condutor> pesquisarTodos();
+	List<Condutor> pesquisarTodos();	
 }
