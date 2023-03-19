@@ -1,6 +1,7 @@
 package br.com.igor.sistemamultas.entities;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -123,7 +124,13 @@ public class Veiculo implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Veiculo [id=" + id + ", placa=" + placa + ", ano=" + ano + ", modelo=" + modelo + ", marca=" + marca
-				+ ", condutor=" + condutor.getId() + ", multas=" + multas + "]";
+		DecimalFormat df = new DecimalFormat("0.00");
+		String todasMultas = "";
+		for (Multa multa : multas) {
+			todasMultas += "\nId: " + multa.getId() + "(Valor: R$ " + df.format(multa.getValor()) + ")";
+		}
+		String dados = "Veículo" + "\nId: " + id + "\nPlaca: " + placa + "\nAno: " + ano + "\nModelo: " + modelo + "\nMarca: " + marca 
+				+ "\nCondutor Id: " + condutor.getId() + "(CNH: " + condutor.getNumCnh() + ")" + "\nMultas" + todasMultas + "\n";
+		return dados;
 	}
 }

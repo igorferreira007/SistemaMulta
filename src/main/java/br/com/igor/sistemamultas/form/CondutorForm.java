@@ -73,6 +73,7 @@ public class CondutorForm {
 				condutores.forEach(System.out::println);
 				break;
 			}
+			
 		} catch (DbException e) {
 			System.out.println("Erro ao pesquisar condutor: " + e.getMessage());
 		} catch (InputMismatchException e) {
@@ -82,13 +83,7 @@ public class CondutorForm {
 	
 	public void atualizar() {
 		try {
-			System.out.println("========================");
-			System.out.print("Pesquisar por CNH: ");
-			int numCnh = sc.nextInt();
-			sc.nextLine();
-			
-			List<Condutor> condutores = condutorDao.pesquisarPorCnh(numCnh);
-			Condutor condutor = condutores.get(0);
+			Condutor condutor = pesquisarPorCnh();
 			
 			System.out.println(condutor);
 			System.out.println();
@@ -99,6 +94,7 @@ public class CondutorForm {
 			System.out.print("Pontuação: ");
 			condutor.setPontucao(sc.nextInt());
 			sc.nextLine();
+			
 			condutorDao.atualizar(condutor);
 			
 		} catch (DbException e) {
@@ -107,16 +103,20 @@ public class CondutorForm {
 			System.out.println("Digite apenas números!");
 		}
 	}
+
+	private Condutor pesquisarPorCnh() throws RuntimeException {
+		System.out.println("========================");
+		System.out.print("Pesquisar por CNH: ");
+		int numCnh = sc.nextInt();
+		sc.nextLine();
+		
+		List<Condutor> condutores = condutorDao.pesquisarPorCnh(numCnh);
+		return condutores.get(0);
+	}
 	
 	public void excluir() {
 		try {
-			System.out.println("========================");
-			System.out.print("Pesquisar por CNH: ");
-			int numCnh = sc.nextInt();
-			sc.nextLine();
-			
-			List<Condutor> condutores = condutorDao.pesquisarPorCnh(numCnh);
-			Condutor condutor = condutores.get(0);
+			Condutor condutor = pesquisarPorCnh();
 			
 			System.out.println(condutor);
 			System.out.print("Deseja confirmar a exclusão? (S/N): ");
@@ -144,7 +144,6 @@ public class CondutorForm {
 	
 	public void pesquisarTodos() {
 		List<Condutor> condutores = condutorDao.pesquisarTodos();
-		
 		condutores.forEach(System.out::println);
 	}
 

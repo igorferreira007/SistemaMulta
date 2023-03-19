@@ -8,6 +8,7 @@ public interface VeiculoDao {
 
 	void cadastrar(Veiculo veiculo);
 	Veiculo pesquisar(Long id);
+	List<Veiculo> pesquisarPorPlaca(String placa);
 	void atualizar(Veiculo veiculo);
 	void excluir(Veiculo veiculo);
 	List<Veiculo> pesquisarTodos();

@@ -3,6 +3,7 @@ package br.com.igor.sistemamultas.dao.impl;
 import java.util.List;
 
 import br.com.igor.sistemamultas.dao.VeiculoDao;
+import br.com.igor.sistemamultas.db.DbException;
 import br.com.igor.sistemamultas.entities.Veiculo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Persistence;
@@ -25,6 +26,15 @@ public class VeiculoDaoImpl implements VeiculoDao {
 	@Override
 	public Veiculo pesquisar(Long id) {
 		return em.find(Veiculo.class, id);
+	}
+	
+	@Override
+	public List<Veiculo> pesquisarPorPlaca(String placa) {
+		List<Veiculo> veiculos = em.createQuery("SELECT v FROM Veiculo v WHERE placa = :placa", Veiculo.class).setParameter("placa", placa).getResultList();
+		if (veiculos.isEmpty()) {
+			throw new DbException("Veículo não encontrado!");
+		}
+		return veiculos;
 	}
 	
 	@Override
