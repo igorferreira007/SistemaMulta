@@ -4,18 +4,13 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import br.com.igor.sistemamultas.form.CondutorForm;
+import br.com.igor.sistemamultas.form.MultaForm;
 import br.com.igor.sistemamultas.form.VeiculoForm;
 
 public class Program {
 
 	public static void main(String[] args) {
 		
-//		CondutorDao condutorDao = DaoFactory.criarCondutorDao();
-//		VeiculoDao veiculoDao = DaoFactory.criarVeiculoDao();
-//		Condutor condutor = condutorDao.pesquisar(4L);
-//		Veiculo veiculo = new Veiculo(null, "JJJ1234", 2020, "M3", "BMW", condutor);
-//		veiculoDao.cadastrar(veiculo);
-
 		Locale.setDefault(new Locale("pt", "BR"));
 		Scanner sc = new Scanner(System.in);
 		
@@ -42,8 +37,33 @@ public class Program {
 	}
 
 	private static void multa(Scanner sc) {
-		menuSecundario("MULTA");
-		int opcao = sc.nextInt();
+		MultaForm multaForm = new MultaForm();
+		
+		int opcao = 0;
+		
+		do {
+			menuSecundario("MULTA");
+			opcao = sc.nextInt();
+			sc.nextLine();
+			
+			switch (opcao) {
+			case 1:
+				multaForm.cadastrar();
+				break;
+			case 2:
+				multaForm.pesquisar();
+				break;
+			case 3:
+				multaForm.atualizar();
+				break;
+			case 4:
+				multaForm.excluir();
+				break;
+			case 5:
+				multaForm.pesquisarTodos();
+				break;
+			}
+		} while (opcao != 0);
 	}
 
 	private static void veiculo(Scanner sc) {
@@ -54,6 +74,7 @@ public class Program {
 		do {
 			menuSecundario("VEÍCULO");
 			opcao = sc.nextInt();
+			sc.nextLine();
 			
 			switch (opcao) {
 			case 1:
@@ -83,6 +104,7 @@ public class Program {
 		do {
 			menuSecundario("CONDUTOR");
 			opcao = sc.nextInt();
+			sc.nextLine();
 			
 			switch (opcao) {
 			case 1:
