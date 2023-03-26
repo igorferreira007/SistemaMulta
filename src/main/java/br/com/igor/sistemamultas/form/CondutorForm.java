@@ -41,6 +41,7 @@ public class CondutorForm {
 		} catch (DbException e) {
 			System.out.println("Erro ao cadastrar condutor: " + e.getMessage());
 		} catch (InputMismatchException e) {
+			sc.nextLine();
 			System.out.println("Digite apenas números!");
 		}
 	}
@@ -77,6 +78,7 @@ public class CondutorForm {
 		} catch (DbException e) {
 			System.out.println("Erro ao pesquisar condutor: " + e.getMessage());
 		} catch (InputMismatchException e) {
+			sc.nextLine();
 			System.out.println("Digite apenas números!");
 		}
 	}
@@ -100,6 +102,7 @@ public class CondutorForm {
 		} catch (DbException e) {
 			System.out.println("Erro ao pesquisar condutor: " + e.getMessage());
 		} catch (InputMismatchException e) {
+			sc.nextLine();
 			System.out.println("Digite apenas números!");
 		}
 	}
@@ -135,6 +138,7 @@ public class CondutorForm {
 		} catch (DbException e) {
 			System.out.println("Erro ao pesquisar condutor: " + e.getMessage());
 		} catch (InputMismatchException e) {
+			sc.nextLine();
 			System.out.println("Digite apenas números!");
 		} catch (RollbackException e) {
 			System.out.println("Esse condutor não pode ser excluído pois existem veículos vinculados a ele.\n"

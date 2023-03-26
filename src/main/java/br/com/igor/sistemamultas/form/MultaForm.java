@@ -44,6 +44,7 @@ public class MultaForm {
 		} catch (DbException e) {
 			System.out.println("Erro ao cadastrar multa: " + e.getMessage());
 		} catch (InputMismatchException e) {
+			sc.nextLine();
 			System.out.println("Digite apenas números!");
 		}
 	}
@@ -61,6 +62,7 @@ public class MultaForm {
 		} catch (DbException e) {
 			System.out.println("Erro ao pesquisar multa: " + e.getMessage());
 		} catch (InputMismatchException e) {
+			sc.nextLine();
 			System.out.println("Digite apenas números!");
 		}
 		return null;
@@ -97,6 +99,7 @@ public class MultaForm {
 		} catch (DbException e) {
 			System.out.println("Erro ao atualizar multa: " + e.getMessage());
 		} catch (InputMismatchException e) {
+			sc.nextLine();
 			System.out.println("Digite apenas números!");
 		}
 	}

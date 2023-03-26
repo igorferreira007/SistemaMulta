@@ -43,6 +43,7 @@ public class VeiculoForm {
 		} catch (DbException e) {
 			System.out.println("Erro ao cadastrar veículo: " + e.getMessage());
 		} catch (InputMismatchException e) {
+			sc.nextLine();
 			System.out.println("Digite apenas números!");
 		}
 	}
@@ -77,6 +78,7 @@ public class VeiculoForm {
 		} catch (DbException e) {
 			System.out.println("Erro ao pesquisar Veículo: " + e.getMessage());
 		} catch (InputMismatchException e) {
+			sc.nextLine();
 			System.out.println("Digite apenas números!");
 		}
 	}
@@ -102,6 +104,7 @@ public class VeiculoForm {
 		} catch (DbException e) {
 			System.out.println("Erro ao pesquisar veículo: " + e.getMessage());
 		} catch (InputMismatchException e) {
+			sc.nextLine();
 			System.out.println("Digite apenas números!");
 		}
 	}
@@ -125,6 +128,7 @@ public class VeiculoForm {
 		} catch (DbException e) {
 			System.out.println("Erro ao pesquisar veículo: " + e.getMessage());
 		} catch (InputMismatchException e) {
+			sc.nextLine();
 			System.out.println("Digite apenas números!");
 		} catch (RollbackException e) {
 			System.out.println("Esse veículo não pode ser excluído pois existem multas vinculados a ele.\n"
